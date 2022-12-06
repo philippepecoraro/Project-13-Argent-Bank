@@ -1,4 +1,3 @@
-import React from 'react'
 import './Home.css'
 import iconChat from '../../assets/icon-chat.png'
 import iconMoney from '../../assets/icon-money.png'
@@ -6,6 +5,7 @@ import iconSecurity from '../../assets/icon-security.png'
 
 
 const Home = () => {
+
     return (
         <div>
             <main className="home">

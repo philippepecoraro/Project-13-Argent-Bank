@@ -37,6 +37,17 @@
     text-decoration: underline;
   }
 
+  .main-nav-connected {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .main-nav-item1 {
+    display: flex;
+    flex-direction: row;
+    margin-right: 5px;
+  }
+
   .main-nav-item-icon {
     margin-right: 5px;
   }
@@ -51,3 +62,14 @@
     width: 200px;
   }
   
+  .main-nav-item-firstName {
+    margin-right: 10px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 720px) {
+    .main-nav-connected {
+        display: flex;
+        flex-direction: column;
+    }
+  }

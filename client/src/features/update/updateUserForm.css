@@ -1,0 +1,47 @@
+.input-form {
+    display: flex;
+    flex-direction: column;       
+}
+
+.input-input-wrapper {     
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.input-firstName-wrapper {
+    margin-right: 1rem;   
+}
+
+.input-firstName-wrapper input, 
+.input-lastName-wrapper input {   
+    height: 32px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin: auto;  
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.save-button, .cancel-button {
+    width: 100px;
+    width: 7rem;
+    height: 28px;  
+}
+
+.save-button {
+    margin-right: 1rem;
+}
+
+::placeholder {
+    opacity: 0.5;  
+}
+
+.error-text {
+    color: red;
+}
