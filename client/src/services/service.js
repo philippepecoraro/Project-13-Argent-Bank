@@ -14,13 +14,17 @@ const register = (email, password, firstName, LastName) => {
 };
 
 const login = async (email, password) => {
+    const boxChecked = JSON.parse(localStorage.getItem("rememberMe"));
     const response = await axios
         .post(API_URL + "user/login", {
             email,
             password,
         });
-    if (response.data.body.token) {
+    if (response.data.body.token && boxChecked) {
         localStorage.setItem("jwtToken", JSON.stringify(response.data.body.token));
+    }
+    if (response.data.body.token && (boxChecked === null)) {
+        sessionStorage.setItem("jwtToken", JSON.stringify(response.data.body.token));
     }
     return response.data;
 };
@@ -28,6 +32,8 @@ const login = async (email, password) => {
 
 const logout = () => {
     localStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("jwtToken");
+    localStorage.removeItem("rememberMe");
 };
 
 const updateUser = (firstName, lastName) => {

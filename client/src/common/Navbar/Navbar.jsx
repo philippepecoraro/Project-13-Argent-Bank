@@ -9,7 +9,7 @@ import { logout } from '../../features/login/loginSlice'
 
 
 const Navbar = () => {
-    const jwtToken = JSON.parse(localStorage.getItem("jwtToken"));
+
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
 
@@ -29,7 +29,7 @@ const Navbar = () => {
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
                 <div>
-                    {!jwtToken ?
+                    {user.length < 1 ?
                         <div>
                             <Link to={"/login"} className="main-nav-item">
                                 <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />

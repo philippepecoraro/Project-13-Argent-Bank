@@ -17,7 +17,7 @@ export const profile = createAsyncThunk(
 )
 
 const initialState = {
-    user: {},
+    user: [],
 }
 
 const userSlice = createSlice({
@@ -29,10 +29,10 @@ const userSlice = createSlice({
             state.user = action.payload;
         },
         [profile.rejected]: (state) => {
-            state.user = {};
+            state.user = [];
         },
         [logout.fulfilled]: (state) => {
-            state.user = {};
+            state.user = [];
         }
     }
 })

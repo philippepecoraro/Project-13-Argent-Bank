@@ -8,7 +8,6 @@ export const updateUser = createAsyncThunk(
     async ({ firstName, lastName }, thunkAPI) => {
         try {
             const response = await service.updateUser(firstName, lastName);
-            console.log('response:', response)
             return response.data;
         } catch (error) {
             console.log('error', error)

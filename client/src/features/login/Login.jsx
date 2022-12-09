@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { login } from './loginSlice'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { useState } from 'react';
 
 
 const Login = () => {
@@ -40,6 +41,21 @@ const Login = () => {
             })
     };
 
+    const [isChecked, setIsChecked] = useState(localStorage.getItem("rememberMe") === "true" ? true : false)
+
+
+    const toggleRememberMe = ({ target }) => {
+        let { checked } = target;
+        if (checked) {
+            localStorage.setItem("rememberMe", checked);
+            setIsChecked(checked);
+        }
+        if (!checked) {
+            localStorage.removeItem("rememberMe");
+            setIsChecked(checked);
+        }
+    }
+
     return (
         <div>
             <main className="main bg-dark login">
@@ -69,8 +85,13 @@ const Login = () => {
                                     className="error-text" />
                             </div>
                             <div className="input-remember">
-                                <Field type="checkbox" id="remember-me" /><label htmlFor="remember-me"
-                                >Remember me</label>
+                                <input name="rememberMe" type="checkbox" id="rememberMe"
+                                    onChange={toggleRememberMe}
+                                    checked={isChecked}
+                                />
+                                <label htmlFor="rememberMe"
+                                >Remember me
+                                </label>
                             </div>
                             <button type="submit" className="sign-in-button">Sign In</button>
                         </Form>

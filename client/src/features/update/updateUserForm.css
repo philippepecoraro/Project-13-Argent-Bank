@@ -11,14 +11,12 @@
 }
 
 .input-firstName-wrapper {
-    margin-right: 1rem;   
+    margin-right: 1rem;    
 }
 
 .input-firstName-wrapper input, 
 .input-lastName-wrapper input {   
     height: 32px;
-    margin-right: 20px;
-    margin-left: 20px;
     margin: auto;  
 }
 
@@ -28,8 +26,7 @@
     justify-content: center;
 }
 
-.save-button, .cancel-button {
-    width: 100px;
+.save-button, .cancel-button {    
     width: 7rem;
     height: 28px;  
 }
@@ -44,4 +41,16 @@
 
 .error-text {
     color: red;
+}
+
+@media (max-width: 600px) {
+    .input-firstName-wrapper input, 
+    .input-lastName-wrapper input  {   
+        height: 32px;
+        margin: auto;  
+        width:8rem;
+    }
+    .save-button, .cancel-button {    
+        width: 5rem;       
+    }
 }
