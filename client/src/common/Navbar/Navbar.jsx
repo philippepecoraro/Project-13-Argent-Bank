@@ -9,6 +9,8 @@ import { logout } from '../../features/login/loginSlice'
 
 
 const Navbar = () => {
+    const jwtLocalToken = JSON.parse(localStorage.getItem("jwtToken"));
+    const jwtSessionToken = JSON.parse(sessionStorage.getItem("jwtToken"));
 
     const dispatch = useDispatch();
     const { user } = useSelector((state) => state.user);
@@ -20,7 +22,7 @@ const Navbar = () => {
     return (
         <header>
             <nav className="main-nav">
-                <Link to={"/"} className="main-nav-logo">
+                <Link to={"/home"} className="main-nav-logo">
                     <img
                         className="main-nav-logo-image"
                         src={argentBankLogo}
@@ -29,7 +31,7 @@ const Navbar = () => {
                     <h1 className="sr-only">Argent Bank</h1>
                 </Link>
                 <div>
-                    {user.length < 1 ?
+                    {!jwtLocalToken && !jwtSessionToken ?
                         <div>
                             <Link to={"/login"} className="main-nav-item">
                                 <FontAwesomeIcon icon={faCircleUser} className="main-nav-item-icon" />
@@ -43,7 +45,7 @@ const Navbar = () => {
                                 <span className="main-nav-item-firstName"> {user.firstName} </span>
                             </div>
                             <div className="main-nav-item2">
-                                <Link to={"/"} className="main-nav-item" onClick={logOut}>
+                                <Link to={"/home"} className="main-nav-item" onClick={logOut}>
                                     <FontAwesomeIcon icon={faRightFromBracket} className="main-nav-item-icon" />
                                     Sign Out
                                 </Link>

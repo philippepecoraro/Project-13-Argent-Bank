@@ -8,6 +8,8 @@ import { updateUser } from './updateSlice'
 
 const UpdateUserForm = () => {
     const { user } = useSelector((state) => state.user);
+    const userFirstName = user.firstName;
+    const userLaststName = user.lastName;
     const dispatch = useDispatch();
 
     const validationSchema = Yup.object().shape({
@@ -22,8 +24,8 @@ const UpdateUserForm = () => {
     });
 
     const initialvalues = {
-        firstName: "",
-        lastName: "",
+        firstName: userFirstName,
+        lastName: userLaststName
     };
 
     const handleLogin = (formValue) => {
@@ -46,28 +48,37 @@ const UpdateUserForm = () => {
                 initialValues={initialvalues}
                 validationSchema={validationSchema}
             >
-                <Form className="input-form">
-                    <div className="input-input-wrapper">
-                        <div className="input-firstName-wrapper">
-                            <Field name="firstName" type="text" id="firstName" placeholder={user.firstName} />
-                            <ErrorMessage
-                                name="firstName"
-                                component="div"
-                                className="error-text" />
+                {formik =>
+                    <Form className="input-form">
+                        <div className="input-input-wrapper">
+                            <div className="input-firstName-wrapper">
+                                <Field name="firstName" type="text" id="firstName" />
+                                <ErrorMessage
+                                    name="firstName"
+                                    component="div"
+                                    className="error-text" />
+                            </div>
+                            <div className="input-lastName-wrapper">
+                                <Field name="lastName" type="text" id="lastName" />
+                                <ErrorMessage
+                                    name="lastName"
+                                    component="div"
+                                    className="error-text" />
+                            </div>
                         </div>
-                        <div className="input-lastName-wrapper">
-                            <Field name="lastName" type="text" id="lastName" placeholder={user.lastName} />
-                            <ErrorMessage
-                                name="lastName"
-                                component="div"
-                                className="error-text" />
+                        <div className="button-wrapper">
+                            <button type="submit" className="save-button" id="save-button">Save</button>
+
+                            <button className="cancel-button" id="cancel-button" type="reset"
+                                onClick={() => {
+                                    formik.resetForm()
+                                    window.location.reload()
+                                }}
+                            >Cancel</button>
+
                         </div>
-                    </div>
-                    <div className="button-wrapper">
-                        <button type="submit" className="save-button" id="save-button">Save</button>
-                        <button type="submit" className="cancel-button" id="cancel-button">Cancel</button>
-                    </div>
-                </Form>
+                    </Form>
+                }
             </Formik>
         </div>
     )
